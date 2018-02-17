@@ -1,0 +1,25 @@
+{
+  "name": "abwi",
+  "version": "1.0.0",
+  "description": "Expense and project tracker for interior design",
+  "main": "server.js",
+  "scripts": {
+    "test": "node_modules/.bin/ava tests/**/*Test.js"
+  },
+  "author": "TBW",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "cors": "^2.8.4",
+    "express": "^4.16.2",
+    "html-pdf": "^2.2.0",
+    "pg": "^7.4.1",
+    "sequelize": "^4.33.4",
+    "sequelize-cli": "^4.0.0"
+  },
+  "devDependencies": {
+    "ava": "^0.25.0",
+    "nyc": "^11.4.1",
+    "sinon": "^4.3.0"
+  }
+}
