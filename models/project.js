@@ -12,7 +12,12 @@ module.exports = (sequelize, DataTypes) => {
 
   Project.prototype.getTotal = async function() {
     let items = await this.getItems();
-    this.total = items.reduce((sum, item) => sum + item.value, 0);
+    return items.reduce((sum, item) => sum + item.value, 0);
+  };
+
+  Project.prototype.json = async function() {
+    this.dataValues.total = await this.getTotal();
+    return this.dataValues;
   };
 
   return Project;
