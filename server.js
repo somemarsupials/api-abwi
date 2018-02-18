@@ -1,4 +1,4 @@
-import { app } from './app';
+const app = require('./app');
 
 const PRODUCTION_PORT = process.env.DATABASE_URL;
 const DEVELOPMENT_PORT = 5000;
