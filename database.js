@@ -12,6 +12,7 @@ const db = {}
 const models = [
   'project',
   'item',
+  'client',
 ];
 
 models.forEach(function(model) {
