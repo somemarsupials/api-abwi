@@ -5,8 +5,8 @@ module.exports = (sequelize, DataTypes) => {
     value: DataTypes.INTEGER
   }, {});
   Item.associate = function(models) {
-    Item.belongsTo(models.Project, {
-      onDelete: 'CASCADE';
+    Item.belongsTo(models.project, {
+      onDelete: 'CASCADE'
     });
   };
   return Item;

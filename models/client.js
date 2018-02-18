@@ -4,8 +4,8 @@ module.exports = (sequelize, DataTypes) => {
     name: DataTypes.STRING
   }, {});
   Client.associate = function(models) {
-    Item.belongsTo(models.Project, {
-      onDelete: 'CASCADE';
+    Client.belongsTo(models.project, {
+      onDelete: 'CASCADE'
     });
   };
   return Client;
