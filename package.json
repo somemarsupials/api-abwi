@@ -4,7 +4,7 @@
   "description": "Expense and project tracker for interior design",
   "main": "server.js",
   "scripts": {
-    "test": "node_modules/.bin/ava tests/**/*Test.js"
+    "test": "node_modules/.bin/nyc node_modules/.bin/ava tests/**/*Test.js"
   },
   "author": "TBW",
   "license": "ISC",
