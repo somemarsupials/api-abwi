@@ -14,6 +14,13 @@ module.exports = {
       value: {
         type: Sequelize.INTEGER
       },
+      projectId: {
+        type: Sequelize.INTEGER,
+        references: {
+          model: 'Projects',
+          key: 'id'
+        }
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE
