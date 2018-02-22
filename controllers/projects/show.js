@@ -1,12 +1,21 @@
 const Project = require('../../database').models.project;
 
 module.exports = async function(req, res, next, model = Project) {
+  let project;
+
   try {
-    let project = await model.find({ id: req.params.id });
-    return res.json(await project.json());
+    project = await model.find({ where: { id: req.params.id } });
   } 
   catch (error) {
     return res.sendStatus(500);
   };
+
+  if (project) {
+    return res.json(await project.json());
+  }
+  else {
+    return res.sendStatus(404);
+  };
+
 };
 
