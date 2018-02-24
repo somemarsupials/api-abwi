@@ -6,8 +6,8 @@ module.exports = (sequelize, DataTypes) => {
   }, {});
 
   Project.associate = function(models) {
-    Project.hasMany(models.item);
-    Project.hasMany(models.client);
+    Project.hasMany(models.item, { onDelete: 'cascade' });
+    Project.hasMany(models.client, { onDelete: 'cascade' });
   };
 
   Project.prototype.getTotal = async function() {
