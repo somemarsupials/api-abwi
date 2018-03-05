@@ -11,7 +11,7 @@ module.exports = async function(req, res, next, model = Project) {
   };
 
   if (project) {
-    return res.json(await project.json());
+    return res.json(await project.json(req.query));
   }
   else {
     return res.sendStatus(404);

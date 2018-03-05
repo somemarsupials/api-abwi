@@ -5,7 +5,7 @@ module.exports = async function(req, res, next, model = Project) {
 
   try {
     let projects = await model.findAll();
-    data = projects.map(async (project) => await project.json());
+    data = projects.map(async (project) => await project.json(req.query));
   } 
   catch (error) {
     return res.sendStatus(500);

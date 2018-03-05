@@ -10,14 +10,23 @@ module.exports = (sequelize, DataTypes) => {
     Project.hasMany(models.client, { onDelete: 'cascade' });
   };
 
-  Project.prototype.getTotal = async function() {
-    let items = await this.getItems();
+  Project.prototype._sumItems = function(items) {
     return items.reduce((sum, item) => sum + item.value, 0);
   };
 
-  Project.prototype.json = async function() {
-    this.dataValues.total = await this.getTotal();
-    return this.dataValues;
+  Project.prototype.json = async function(params = {}) {
+    if (!params.detail) {
+      return this.dataValues;
+    };
+
+    let items = await this.getItems();
+    let itemsValue = this._sumItems(items);
+
+    return Object.assign({}, this.dataValues, { 
+      clients: await this.getClients(),
+      items: items,
+      value: itemsValue,
+    });
   };
 
   return Project;

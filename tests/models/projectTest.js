@@ -1,5 +1,3 @@
-'use strict';
-
 const Project = require('../../database').models.project;
 const test = require('ava').test;
 const sinon = require('sinon');
@@ -7,12 +5,21 @@ const sinon = require('sinon');
 const project = Project.build({ id: 1, title: 'A title' });
 const items = [{ value: 1 }, { value: 2 }];
 
-test('#total - adds client values', async t => {
+test('#json - when detail, returns data, items and clients', async t => {
   sinon.stub(project, 'getItems').returns(items);
-  t.is(3, await project.getTotal());
+  sinon.stub(project, 'getClients').returns('clients');
+  t.deepEqual({ 
+    id: 1, 
+    title: 'A title', 
+    value: 3, 
+    items: items, 
+    clients: 'clients' 
+  }, await project.json({ detail: true }));
 });
 
-test('#json - returns data values and total', async t => {
-  sinon.stub(project, 'getTotal').returns(5);
-  t.deepEqual({ id: 1, title: 'A title', total: 5 }, await project.json());
+test('#json - when not detail, returns data values', async t => {
+  t.deepEqual({ 
+    id: 1, 
+    title: 'A title', 
+  }, await project.json());
 });
