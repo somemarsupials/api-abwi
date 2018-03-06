@@ -23,7 +23,6 @@ module.exports = (sequelize, DataTypes) => {
     let itemsValue = this._sumItems(items);
 
     return Object.assign({}, this.dataValues, { 
-      clients: await this.getClients(),
       items: items,
       value: itemsValue,
     });

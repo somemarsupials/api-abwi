@@ -7,13 +7,11 @@ const items = [{ value: 1 }, { value: 2 }];
 
 test('#json - when detail, returns data, items and clients', async t => {
   sinon.stub(project, 'getItems').returns(items);
-  sinon.stub(project, 'getClients').returns('clients');
   t.deepEqual({ 
     id: 1, 
     title: 'A title', 
     value: 3, 
     items: items, 
-    clients: 'clients' 
   }, await project.json({ detail: true }));
 });
 
