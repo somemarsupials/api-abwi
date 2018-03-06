@@ -11,6 +11,13 @@ module.exports = {
       title: {
         type: Sequelize.STRING
       },
+      clientId: {
+        type: Sequelize.INTEGER,
+        references: {
+          model: 'clients',
+          key: 'id',
+        },
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE

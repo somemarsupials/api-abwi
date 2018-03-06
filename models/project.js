@@ -7,7 +7,7 @@ module.exports = (sequelize, DataTypes) => {
 
   Project.associate = function(models) {
     Project.hasMany(models.item, { onDelete: 'cascade' });
-    Project.hasMany(models.client, { onDelete: 'cascade' });
+    Project.belongsTo(models.client, { onDelete: 'cascade' });
   };
 
   Project.prototype._sumItems = function(items) {

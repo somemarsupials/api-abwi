@@ -4,9 +4,7 @@ module.exports = (sequelize, DataTypes) => {
     name: DataTypes.STRING
   }, {});
   Client.associate = function(models) {
-    Client.belongsTo(models.project, {
-      onDelete: 'CASCADE'
-    });
+    Client.hasMany(models.project, { onDelete: 'cascade' });
   };
   return Client;
 };
