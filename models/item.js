@@ -4,8 +4,14 @@ module.exports = (sequelize, DataTypes) => {
     description: DataTypes.STRING,
     value: DataTypes.INTEGER
   }, {});
+
   Item.associate = function(models) {
     Item.belongsTo(models.project, { onDelete: 'CASCADE' });
   };
+
+  Item.prototype.json = function(params = {}) {
+    return this.dataValues;
+  };
+
   return Item;
 };
