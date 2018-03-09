@@ -6,7 +6,7 @@ let projects = [];
 for (let project = 0; project < 5; project++) {
   projects.push({
     id: project,
-    title: `project ${project}`,
+    title: `Project ${project}`,
     clientId: project % 3,
     createdAt: now,
     updatedAt: now,

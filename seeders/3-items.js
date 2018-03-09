@@ -8,7 +8,7 @@ for (let i = 0; i < 25; i++) {
   relative = i % 5;
   items.push({
     id: i,
-    description: `item ${relative}`,
+    description: `Chair ${relative * 1000}`,
     value: i,
     projectId: project,
     createdAt: now,

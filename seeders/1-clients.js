@@ -6,7 +6,7 @@ let clients = [];
 for (let client = 0; client < 3; client++) {
   clients.push({
     id: client,
-    name: `client ${client}`,
+    name: `James McCannon ${client}`,
     createdAt: now,
     updatedAt: now,
   });
