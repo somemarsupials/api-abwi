@@ -25,6 +25,7 @@ module.exports = (sequelize, DataTypes) => {
     return Object.assign({}, this.dataValues, { 
       items: items,
       value: itemsValue,
+      client: await this.getClient(),
     });
   };
 
