@@ -13,5 +13,6 @@ app.use(cors());
 // routes
 
 app.use('/projects', require('./controllers/projects/'));
+app.use('/clients', require('./controllers/clients/'));
 
 module.exports = app;
