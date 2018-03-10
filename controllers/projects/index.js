@@ -9,7 +9,7 @@ router.post('/', require('./create'));
 router.patch('/:id', require('./update'));
 router.delete('/:id', require('./delete'));
 
-// Client child routes
+// Item child routes
 
 router.use('/:projectId/items', require('./items/'));
 
