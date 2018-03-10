@@ -7,19 +7,19 @@ const sinon = require('sinon');
 const req = { body: 'body' };
 const res = { sendStatus: sinon.spy() };
 
-test('POST /project - when database error', async t => {
+test('POST /projects - when database error', async t => {
   let model = { create: sinon.stub().throws(new Error()) };
   await action(req, res, null, model);
   t.true(res.sendStatus.calledWith(500)); 
 });
 
-test('POST /project - sends correct status code', async t => {
+test('POST /projects - sends correct status code', async t => {
   let model = { create: sinon.stub() };
   await action(req, res, null, model);
   t.true(res.sendStatus.calledWith(200));
 });
 
-test('POST /project - uses correct ID', async t => {
+test('POST /projects - uses correct ID', async t => {
   let model = { create: sinon.stub() };
   await action(req, res, null, model);
   t.true(model.create.calledWith('body'));
