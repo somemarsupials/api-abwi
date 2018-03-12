@@ -3,7 +3,7 @@
 const Sequelize = require('sequelize');
 
 const uri = process.env.DATABASE_URL || 'postgres://localhost:5432/abwi';
-const sequelize = new Sequelize(uri);
+const sequelize = new Sequelize(uri, { operatorsAliases: false });
 const db = {}
 
 // Check database connection
