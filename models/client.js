@@ -8,8 +8,16 @@ module.exports = (sequelize, DataTypes) => {
     Client.hasMany(models.project, { onDelete: 'cascade' });
   };
 
-  Client.prototype.json = function(params = {}) {
-    return this.dataValues;
+  Client.prototype.json = async function(params = {}) {
+    if (!params.detail) {
+      return this.dataValues;
+    };
+
+    let projects = await this.getProjects();
+
+    return Object.assign({}, this.dataValues, { 
+      projects: projects
+    });
   };
 
   return Client;

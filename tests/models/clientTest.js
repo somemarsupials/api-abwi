@@ -4,10 +4,19 @@ const sinon = require('sinon');
 
 const client = Client.build({ id: 1, name: 'J' });
 
-test('#json', t => {
+test('#json - when no detail', async t => {
   t.deepEqual({ 
     id: 1, 
     name: 'J', 
-  }, client.json());
+  }, await client.json());
+});
+
+test('#json - when detail', async t => {
+  sinon.stub(client, 'getProjects').returns([1, 2]);
+  t.deepEqual({ 
+    id: 1, 
+    name: 'J', 
+    projects: [1, 2]
+  }, await client.json({ detail: true }));
 });
 

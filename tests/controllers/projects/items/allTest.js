@@ -39,5 +39,3 @@ test('GET /projects/:id/items - passes query string', async t => {
   await action(req, res, null, model);
   t.true(items.every((item) => item.json.calledWith(query)));
 });
-
-
