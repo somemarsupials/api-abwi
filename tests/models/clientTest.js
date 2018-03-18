@@ -11,6 +11,13 @@ test('#json - when no detail', async t => {
   }, await client.json());
 });
 
+test('#json - when detail is false', async t => {
+  t.deepEqual({ 
+    id: 1, 
+    name: 'J', 
+  }, await client.json({ detail: 'false' }));
+});
+
 test('#json - when detail', async t => {
   sinon.stub(client, 'getProjects').returns([1, 2]);
   t.deepEqual({ 

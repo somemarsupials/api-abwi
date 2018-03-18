@@ -9,7 +9,7 @@ module.exports = (sequelize, DataTypes) => {
   };
 
   Client.prototype.json = async function(params = {}) {
-    if (!params.detail) {
+    if (!params.detail || params.detail === 'false') {
       return this.dataValues;
     };
 
