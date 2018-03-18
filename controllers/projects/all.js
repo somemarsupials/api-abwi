@@ -4,7 +4,8 @@ module.exports = async function(req, res, next, model = Project) {
   let data;
 
   try {
-    let projects = await model.findAll();
+    // databaseQuery is created by middleware!
+    let projects = await model.findAll({ where: req.databaseQuery(model) });
     data = projects.map(async (project) => await project.json(req.query));
   } 
   catch (error) {
