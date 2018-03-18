@@ -4,13 +4,17 @@ const cors = require('cors');
 
 const app = express();
 
-// middlewares
+/* middlewares */
 
+// third-party middlewares
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());
 
-// routes
+// custom middlewares
+app.use(require('./middlewares/queryFilter'));
+
+/* routes */
 
 app.use('/projects', require('./controllers/projects/'));
 app.use('/clients', require('./controllers/clients/'));
